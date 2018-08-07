@@ -143,6 +143,7 @@ deploy_cf_and_eirini() {
      --ops-file "$CF_DEPLOYMENT"/operations/bosh-lite.yml \
      --ops-file "$CF_DEPLOYMENT"/operations/use-compiled-releases.yml \
      --ops-file "$EIRINI_RELEASE"/operations/capi-dev-version.yml \
+     --ops-file "$EIRINI_RELEASE"/operations/enable-opi.yml \
      --vars-store "$CF_DEPLOYMENT"/deployment-vars.yml \
      --var=k8s_flatten_cluster_config="$(kubectl config view --flatten=true)" \
      --var system_domain=bosh-lite.com \
