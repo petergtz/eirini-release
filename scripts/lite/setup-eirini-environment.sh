@@ -15,13 +15,13 @@ main() {
   update_runtime_config
 
   echo "::::::: Add Eirini routes to Director VM"
-  #add_eirini_routes
+	add_eirini_routes
 
   echo "::::::: Setting up minikube"
-  #setup_minikube
+	setup_minikube
 
   echo "::::::: Preaparing eirini release"
-  #prepare_eirini_release
+	prepare_eirini_release
 
   echo "::::::: Preaparing capi release"
   prepare_capi_release
@@ -136,14 +136,14 @@ prepare_capi_release() {
 deploy_cf_and_eirini() {
   bosh --non-interactive update-cloud-config "$CF_DEPLOYMENT/iaas-support/bosh-lite/cloud-config.yml"
 
-     #--ops-file "$EIRINI_RELEASE"/operations/dev-version.yml \
-     #--ops-file "$EIRINI_RELEASE"/operations/eirini-bosh-operations.yml \
   bosh interpolate "$CF_DEPLOYMENT"/cf-deployment.yml \
      --ops-file "$CF_DEPLOYMENT"/operations/experimental/enable-bpm.yml \
      --ops-file "$CF_DEPLOYMENT"/operations/bosh-lite.yml \
      --ops-file "$CF_DEPLOYMENT"/operations/use-compiled-releases.yml \
      --ops-file "$EIRINI_RELEASE"/operations/capi-dev-version.yml \
      --ops-file "$EIRINI_RELEASE"/operations/enable-opi.yml \
+     --ops-file "$EIRINI_RELEASE"/operations/eirini-bosh-operations.yml \
+     --ops-file "$EIRINI_RELEASE"/operations/dev-version.yml \
      --vars-store "$CF_DEPLOYMENT"/deployment-vars.yml \
      --var=k8s_flatten_cluster_config="$(kubectl config view --flatten=true)" \
      --var system_domain=bosh-lite.com \
