@@ -78,6 +78,7 @@ data:
       nats_ip: "nats.scf.svc.cluster.local"
       api_endpoint: "http://api.{{ .Release.Namespace }}.svc.cluster.local:9022"
       cf_username: "admin"
+      cc_certs_secret_name: "secrets-{{ .Chart.Version }}-{{ .Values.kube.secrets_generation_counter }}"
       cf_password: {{ .Values.secrets.CLUSTER_ADMIN_PASSWORD }}
       external_eirini_address: "{{ index .Values.kube.external_ips 0 }}:5800"
       skip_ssl_validation: true
