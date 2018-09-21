@@ -9,9 +9,5 @@ COPY opi /workspace/jobs/registry/bin/
 ENTRYPOINT [ "/workspace/jobs/registry/bin/opi", \
     "registry", \
     "--rootfs", \
-		"/workspace/jobs/registry/eirinifs.tar", \
-		"--cert", \
-		"/workspace/jobs/certs/ca.crt", \
-		"--key", \
-		"/workspace/jobs/certs/domain.key" \
+	"/workspace/jobs/registry/eirinifs.tar" \
 ]
